@@ -22,7 +22,7 @@ def get_weather():
     }
     querystring = {"callback": "test", "id": os.environ.get("SERVICE_ID"), "units": "metric", "mode": "xml",
                    "q": city_name}
-    response = requests.request("POST", url, headers=headers, params=querystring)
+    response = requests.request("GET", url, headers=headers, params=querystring)
     res = response.json()
     res["version"] = "1.0"
     res["deploy_color"] = os.environ.get("DEPLOY_COLOR")
