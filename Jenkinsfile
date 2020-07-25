@@ -29,7 +29,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'SERVICE_ID', variable: 'SERVICE_ID'), string(credentialsId: 'API_KEY', variable: 'API_KEY')]) {
                 sh '''
                     exist_service_info=`kubectl get secret service-info | grep service-info | wc -l`
-                    if [$exist_service_info -eq 1]; then
+                    if [ $exist_service_info -eq 1 ]; then
                       kubectl delete secret service-info
                     fi
                     echo -n ${SERVICE_ID} > ./SERVICE_ID
