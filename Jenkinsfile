@@ -48,5 +48,12 @@ pipeline {
             }
         }
 
+        stage('Create service') {
+            steps {
+                sh '''
+                    kubectl apply -f infra/app/service.yml
+                '''
+            }
+        }
     }
 }

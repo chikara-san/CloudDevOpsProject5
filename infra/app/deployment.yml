@@ -18,7 +18,7 @@ spec:
       - name: weather
         image: orikix/devopscapstone:latest
         ports:
-        - containerPort: 80
+        - containerPort: 5000
         env:
           - name: SERVICE_ID
             valueFrom:
