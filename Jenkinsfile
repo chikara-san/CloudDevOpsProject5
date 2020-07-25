@@ -32,10 +32,10 @@ pipeline {
                     if [ $exist_service_info -eq 1 ]; then
                       kubectl delete secret service-info
                     fi
-                    echo -n ${SERVICE_ID} > ./SERVICE_ID
-                    echo -n ${API_KEY} > ./API_KEY
-                    kubectl create secret generic service-info --from-file=./SERVICE_ID --from-file=./API_KEY
-                    rm  ./SERVICE_ID ./API_KEY
+                    echo -n ${SERVICE_ID} > ./serviceid
+                    echo -n ${API_KEY} > ./apikey
+                    kubectl create secret generic service-info --from-file=./serviceid --from-file=./apikey
+                    rm  ./serviceid ./apikey
                 '''
                 }
             }
