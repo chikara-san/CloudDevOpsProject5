@@ -28,6 +28,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'SERVICE_ID', variable: 'SERVICE_ID'), string(credentialsId: 'API_KEY', variable: 'API_KEY')]) {
                 sh '''
+                    kubectl delete secret service-info
                     echo -n ${SERVICE_ID} > ./SERVICE_ID
                     echo -n ${API_KEY} > ./API_KEY
                     kubectl create secret generic service-info --from-file=./SERVICE_ID --from-file=./API_KEY
