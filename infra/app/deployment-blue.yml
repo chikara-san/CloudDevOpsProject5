@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-app-deployment-blue
+  labels:
+    app: weather-blue
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: weather-blue
+  template:
+    metadata:
+      labels:
+        app: weather-blue
+    spec:
+      containers:
+      - name: weather
+        image: orikix/devopscapstone:latest
+        ports:
+        - containerPort: 5000
+        env:
+          - name: SERVICE_ID
+            valueFrom:
+              secretKeyRef:
+                name: service-info
+                key: serviceid
+          - name: API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: service-info
+                key: apikey
+          - name: DEPLOY_COLOR
+            value: BLUE

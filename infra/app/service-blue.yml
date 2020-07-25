@@ -4,7 +4,7 @@ metadata:
   name: weather-service
 spec:
   selector:
-    app: weather
+    app: weather-blue
   type: LoadBalancer
   ports:
   - name: http

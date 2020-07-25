@@ -40,18 +40,24 @@ pipeline {
                 }
             }
         }
-        stage('Create deployment') {
+        stage('Create green deployment') {
             steps {
                 sh '''
-                    kubectl apply -f infra/app/deployment.yml
+                    kubectl apply -f infra/app/deployment-green.yml
+                    kubectl apply -f infra/app/service-green.yml
+
                 '''
             }
         }
 
-        stage('Create service') {
+        stage('Deploy approval'){
+            input "Deploy to prod?"
+        }
+        stage('Create blue deployment') {
             steps {
                 sh '''
-                    kubectl apply -f infra/app/service.yml
+                    kubectl apply -f infra/app/deployment-blue.yml
+                    kubectl apply -f infra/app/service-blue.yml
                 '''
             }
         }

@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: weather-app-deployment
+  name: weather-app-deployment-green
   labels:
-    app: weather
+    app: weather-green
+
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: weather
+      app: weather-green
   template:
     metadata:
       labels:
-        app: weather
+        app: weather-green
     spec:
       containers:
       - name: weather
@@ -30,3 +31,5 @@ spec:
               secretKeyRef:
                 name: service-info
                 key: apikey
+          - name: DEPLOY_COLOR
+            value: GREEN
