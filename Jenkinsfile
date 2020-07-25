@@ -43,7 +43,7 @@ pipeline {
         stage('Create deployment') {
             steps {
                 sh '''
-                    kubectl apply -f app/deployment.yml
+                    kubectl apply -f infra/app/deployment.yml
                 '''
             }
         }
