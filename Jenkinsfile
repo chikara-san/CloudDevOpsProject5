@@ -1,8 +1,6 @@
 pipeline {
 	agent any
-	environment {
-        CREDENTIALS = credentials('credentials-id')
-    }
+
 	stages {
         stage('Linting') {
             steps {
