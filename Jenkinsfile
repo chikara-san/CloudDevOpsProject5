@@ -10,7 +10,7 @@ pipeline {
         stage('Build image') {
             steps {
                 sh '''
-                    docker build -t misenli/devopscapstone .
+                    docker build -t orikix/devopscapstone .
                 '''
             }
         }
