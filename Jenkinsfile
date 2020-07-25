@@ -45,13 +45,14 @@ pipeline {
                 sh '''
                     kubectl apply -f infra/app/deployment-green.yml
                     kubectl apply -f infra/app/service-green.yml
-
                 '''
             }
         }
 
-        stage('Deploy approval'){
-            input "Deploy to prod?"
+        stage('Deploy approval') {
+            steps {
+                input "Deploy to blue?"
+            }
         }
         stage('Create blue deployment') {
             steps {
