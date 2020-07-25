@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	environment {
+        CREDENTIALS = credentials('credentials-id')
+    }
 	stages {
         stage('Linting') {
             steps {
@@ -15,7 +18,7 @@ pipeline {
         }
         stage('Push image') {
             steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
                 sh '''
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker push misenli/devopscapstone
