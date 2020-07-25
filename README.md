@@ -2,6 +2,11 @@
 
 In this project, I chose the app of offering weather API for given city and chose green/blue deployment for my pipeline. 
 
+## Repository
+
+All code sits in here. 
+https://github.com/misenli/CloudDevOpsProject5
+
 ## Directory structure
 ~~~
 .
