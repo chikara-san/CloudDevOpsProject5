@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                     echo -n ${SERVICE_ID} > ./SERVICE_ID
                     echo -n ${API_KEY} > ./API_KEY
-                    kubectl create secret generic service_info --from-file=./SERVICE_ID --from-file=./API_KEY
+                    kubectl create secret generic service-info --from-file=./SERVICE_ID --from-file=./API_KEY
                     rm  ./SERVICE_ID ./API_KEY
                 '''
                 }
