@@ -18,7 +18,7 @@ spec:
       containers:
       - name: weather
         image: orikix/devopscapstone
-        imagePullPolicy：Always
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
         env:
