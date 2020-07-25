@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        stage('Set secret from envvars') {
+        stage('Create deployment') {
             steps {
                 sh '''
                     kubectl create deployment -f app/deployment.yml
