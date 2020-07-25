@@ -19,6 +19,6 @@ spec:
         image: orikix/devopscapstone:latest
         ports:
         - containerPort: 80
-        envFROM:
+        envFrom:
           - secretRef: SERVICE_ID
           - secretRef: API_KEY
