@@ -24,5 +24,25 @@ pipeline {
                 }
             }
         }
+        stage('Set secret from envvars') {
+            steps {
+                withCredentials([string(credentialsId: 'SERVICE_ID', variable: 'SERVICE_ID'), string(credentialsId: 'API_KEY', variable: 'API_KEY')]) {
+                sh '''
+                    echo -n ${SERVICE_ID} > ./SERVICE_ID
+                    echo -n ${API_KEY} > ./API_KEY
+                    kubectl create secret generic service_info --from-file=./SERVICE_ID --from-file=./API_KEY
+                    rm  ./SERVICE_ID ./API_KEY
+                '''
+                }
+            }
+        }
+        stage('Set secret from envvars') {
+            steps {
+                sh '''
+                    kubectl create deployment -f app/deployment.yml
+                '''
+            }
+        }
+
     }
 }
